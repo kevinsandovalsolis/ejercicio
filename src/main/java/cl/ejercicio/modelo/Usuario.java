@@ -21,6 +21,9 @@ public class Usuario {
     @Column(name="password")
     private String password;
 
+    @Column(name="token")
+    private String token;
+
     @Column(name="fecha_creacion")
     private LocalDateTime fechaCreacion;
 
@@ -33,6 +36,14 @@ public class Usuario {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "usuario")
     private List<Telefono> telefonos;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "usuario")
     private List<Acceso> accesos;

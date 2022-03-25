@@ -60,6 +60,7 @@ public class UsuarioConverter {
         usuarioResponse.setFechaCreacion(usuario.getFechaCreacion());
         usuarioResponse.setUltimoLogin(getUltimoAcceso(usuario.getAccesos()));
         usuarioResponse.setActivo(usuario.getEstado().getIdEstado()==1?true:false);
+        usuarioResponse.setToken(usuario.getToken());
         usuarioResponse.setTelefonos(usuario.getTelefonos().stream()
                 .collect(ArrayList::new,(l,t)->l.add(getTelefono(t)),ArrayList::addAll));
 

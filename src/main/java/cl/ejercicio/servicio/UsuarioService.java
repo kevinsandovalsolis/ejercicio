@@ -1,5 +1,6 @@
 package cl.ejercicio.servicio;
 
+import cl.ejercicio.Util.JwtUtil;
 import cl.ejercicio.Util.Utilidades;
 import cl.ejercicio.converter.UsuarioConverter;
 import cl.ejercicio.dto.UsuarioRequestDTO;
@@ -9,8 +10,12 @@ import cl.ejercicio.exception.ValidacionException;
 import cl.ejercicio.modelo.Usuario;
 import cl.ejercicio.repositorio.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -26,6 +31,9 @@ public class UsuarioService {
     @Autowired
     private Utilidades utilidades;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
 
 
     public UsuarioResponseDTO guardarUsuario(UsuarioRequestDTO usuarioRequestDTO){
@@ -36,6 +44,8 @@ public class UsuarioService {
             utilidades.validarPassword(usuarioRequestDTO.getPassword());
             validarUsuarioMail(usuarioRequestDTO.getCorreo());
             Usuario usuario=usuarioBdFunction.apply(usuarioRequestDTO);
+            usuario.setToken(jwtUtil.generateToken(new User(usuario.getCorreo(), usuario.getPassword(),
+                    new ArrayList<>())));
             usuarioRepository.save(usuario);
             return usuarioResponse.apply(usuario);
 
