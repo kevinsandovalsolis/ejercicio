@@ -24,7 +24,7 @@ public class UsuarioConverter {
         usuario.setPassword(usuarioRequestDTO.getPassword());
         usuario.setFechaCreacion(LocalDateTime.now());
         usuario.setFechaActuaizacion(LocalDateTime.now());
-        usuario.setEstado(new Estado(1));
+        usuario.setEstado(new Estado(1,"Activo"));
         usuario.setAccesos(Arrays.asList(new Acceso(usuario.getFechaCreacion())));
         usuario.setTelefonos(usuarioRequestDTO.getTelefonos().stream()
                 .collect(ArrayList::new,(l,t)->l.add(getTelefono(t)),ArrayList::addAll));
