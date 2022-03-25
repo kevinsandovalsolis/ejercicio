@@ -1,0 +1,19 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      console.settings.trace: false
+      spring.h2.console.settings.web-allow-others: false
+  datasource:
+    url: jdbc:h2:mem:usuario
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+
+patrones:
+  mail: "[a-zA-z0-9\\.]@[a-zA-z0-9\\.]"
+  password: "[a-zA-z0-9]"
