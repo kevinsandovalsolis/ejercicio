@@ -17,4 +17,4 @@ jwt:
   secret: "secretjwt"
 patrones:
   mail: "[a-zA-z0-9\\.]*@[a-zA-z0-9\\.]*"
-  password: "[a-zA-z0-9]*"
+  password: "[a-zA-z0-9]+"

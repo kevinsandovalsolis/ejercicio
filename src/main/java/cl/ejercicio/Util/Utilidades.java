@@ -17,14 +17,14 @@ public class Utilidades {
 
     public void validarMail(String mail){
         Pattern pattern=Pattern.compile(patronMail,Pattern.CASE_INSENSITIVE);
-        if(mail==null || !pattern.matcher(mail).find()) {
+        if(mail==null || !pattern.matcher(mail).matches()) {
             throw new ValidacionException("Error validando mail");
         }
     }
 
     public void validarPassword(String pass){
         Pattern pattern=Pattern.compile(patronPass,Pattern.CASE_INSENSITIVE);
-        if(pass==null || !pattern.matcher(pass).find()) {
+        if(pass==null || !pattern.matcher(pass).matches()) {
             throw new ValidacionException("Error validando password");
         }
     }
