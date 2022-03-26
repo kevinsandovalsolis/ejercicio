@@ -1,10 +1,8 @@
 # ejercicio BCI
 
 1. Instalar java 8 o superior
-2. Una vez clonado el repositorio ir a la ruta /jar por consola
-2b. importar en algun IDE como projecto gradle
-3. Ejecutar comando java -jar ejercicio-1.0.0-SNAPSHOT.jar
-3b. Ejecutar boorRun en IDE
+2. importar en algun IDE como projecto gradle
+3. Ejecutar bootRun en IDE
 4. una vez que termine de ejecutar abrir en navegador ruta http://localhost:8080/h2-console
 5. ingresar con 
    url: jdbc:h2:mem:usuario
@@ -27,21 +25,12 @@ curl --location --request POST 'http://localhost:8080/usuario' \
 }]
 }'
 
+7. enviar request 
+
 
 
 Swagger:
 
 curl --location --request GET 'http://localhost:8080/v2/api-docs' \
---header 'Content-Type: application/json' \
---header 'Cookie: JSESSIONID=8CC4AA306959B6149EB805772C4817EF' \
---data-raw '{
-"nombre":"kevin",
-"correo":"kevin1@email.com",
-"password":"asas",
-"telefonos":[{
-"numero":"123123",
-"codigoCiudad":"1",
-"codigoPais":"9"
-}]
-}'
+--header 'Cookie: JSESSIONID=8CC4AA306959B6149EB805772C4817EF'
 
